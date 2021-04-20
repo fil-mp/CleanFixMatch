@@ -154,10 +154,10 @@ def relabel10(args,unq_labeled_idx, all_targets, labels):
       transform=transform_labeled)
   '''    
   train_unq_labeled_dataset = CIFAR10SSL1(
-      "/home/infres/dpkontrazis/drazi/FixMatch-pytorch/data", unq_labeled_idx, all_targets, train=True,
+      "/content/CleanFixMatch/data", unq_labeled_idx, all_targets, train=True,
       transform=transform_labeled)
   train_unq_unlabeled_dataset = CIFAR10SSL(
-      "/home/infres/dpkontrazis/drazi/FixMatch-pytorch/data", unq_unlabeled_idx, train=True,
+      "/content/CleanFixmatch/data", unq_unlabeled_idx, train=True,
       transform=transform_labeled)
   return train_unq_unlabeled_dataset,train_unq_labeled_dataset
 
