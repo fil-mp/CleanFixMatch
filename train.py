@@ -20,7 +20,7 @@ from torch.utils.tensorboard import SummaryWriter
 from torch.autograd import Variable
 from tqdm import tqdm
 
-from dataset.cifare import *
+from dataset.cifar import *
 from utils import AverageMeter, accuracy
 
 logger = logging.getLogger(__name__)
@@ -480,7 +480,7 @@ def train(args,all_targets,labeled_trainloader, unlabeled_trainloader, unq_unlab
             
             #if ((epoch+1)>1):
             #targets_unl=targets_u*mask
-            if ((epoch+1)>0 and (epoch+1)%2==0):
+            if ((epoch+1)>400 and (epoch+1)%2==0):
                 ind_unl=i*mask1.cpu().detach()
                 targets_unl=targets_u.cpu().detach().numpy()
                 ind_unl=ind_unl.numpy()
@@ -532,7 +532,7 @@ def train(args,all_targets,labeled_trainloader, unlabeled_trainloader, unq_unlab
                     mask1=mask1_probs.avg))
                 p_bar.update()
         
-        if ((epoch+1)>0 and (epoch+1)%2==0):
+        if ((epoch+1)>400 and (epoch+1)%2==0):
         #if ((epoch+1)>20):  
             ixs=np.concatenate(inds).ravel()
             ls=np.concatenate(lbs).ravel()  
@@ -623,6 +623,7 @@ def train(args,all_targets,labeled_trainloader, unlabeled_trainloader, unq_unlab
                 'acc': test_acc,
                 'best_acc': best_acc,
                 'optimizer': optimizer.state_dict(),
+                'scheduler': scheduler.state_dict(),
             }, is_best, args.out)
 
             test_accs.append(test_acc)
