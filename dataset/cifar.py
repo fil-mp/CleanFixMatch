@@ -154,10 +154,10 @@ def relabel10(args,unq_labeled_idx, all_targets, labels):
       transform=transform_labeled)
   '''    
   train_unq_labeled_dataset = CIFAR10SSL1(
-      "/content/CleanFixMatch/data", unq_labeled_idx, all_targets, train=True,
+      "./CleanFixMatch/data", unq_labeled_idx, all_targets, train=True,
       transform=transform_labeled)
   train_unq_unlabeled_dataset = CIFAR10SSL(
-      "/content/CleanFixmatch/data", unq_unlabeled_idx, train=True,
+      "./CleanFixmatch/data", unq_unlabeled_idx, train=True,
       transform=transform_labeled)
   return train_unq_unlabeled_dataset,train_unq_labeled_dataset
 
@@ -179,13 +179,13 @@ def relabel100(args,unq_labeled_idx, all_targets, labels):
   #np.random.shuffle(labeled_index)
   
   train_labeled_dataset = CIFAR100SSL1(
-      "/home/infres/dpkontrazis/drazi/FixMatch-pytorch/data", labeled_index, n_labels, train=True,
+      "./CleanFixMatch/data", labeled_index, n_labels, train=True,
       transform=transform_labeled)
   train_unq_labeled_dataset = CIFAR100SSL1(
-      "/home/infres/dpkontrazis/drazi/FixMatch-pytorch/data", unq_labeled_idx, all_targets, train=True,
+      "./CleanFixMatch/data", unq_labeled_idx, all_targets, train=True,
       transform=transform_labeled)
   train_unq_unlabeled_dataset = CIFAR100SSL(
-      "/home/infres/dpkontrazis/drazi/FixMatch-pytorch/data", unq_unlabeled_idx, train=True,
+      "./CleanFixMatch/data", unq_unlabeled_idx, train=True,
       transform=transform_labeled)
   return train_labeled_dataset,train_unq_unlabeled_dataset,train_unq_labeled_dataset
 
