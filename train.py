@@ -820,8 +820,8 @@ def label_denoising(args,all_targets,itrs,loader,unq_labeled_idx,lbels,ix,lb,e):
     #print(ix[0:299])
     conf=[]
     confl=[]
-    confident=ix[0]
-    confident_target = lb[0]
+    confident=ix[:2]
+    confident_target = lb[:2]
     conf.append(confident)
     confl.append(confident_target)
     unq_labeled_idx=np.append(unq_labeled_idx,confident)
